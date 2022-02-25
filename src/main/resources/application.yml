@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: '@spring.profiles.active@'
+---
+server:
+  port: 8081
+  servlet:
+    context-path: /prueba-app
+spring:
+  profiles: local
+  application:
+    name: prueba-app
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    #jdbc-url: "jdbc:oracle:thin:@10.0.0.95:1521:DEVSALUD"
+    jdbc-url: "jdbc:oracle:thin:@127.0.0.1:1521:ORCL"
+    username: "SIGPS"
+    password: "Essalud20$"
+    hikari:
+      maximum-pool-size: 50
+      connection-timeout: 45000
+---
+spring:
+  profiles: dev
+  application:
+    name: prueba-app
+  datasource:
+    jndi-name: java:/jdbc/dsprestacionsocial
+    driver-class-name: oracle.jdbc.OracleDriver
+---
+spring:
+  profiles: qa
+  application:
+    name: prueba-app
+  datasource:
+    jndi-name: java:/jdbc/dsprestacionsocial
+    driver-class-name: oracle.jdbc.OracleDriver
+---
+spring:
+  profiles: prd
+  application:
+    name: prueba-app
+  datasource:
+    jndi-name: java:/jdbc/dsprestacionsocial
+    driver-class-name: oracle.jdbc.OracleDriver
